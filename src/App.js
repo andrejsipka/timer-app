@@ -1,42 +1,32 @@
 import { useState, useEffect } from "react";
+import Timer from './components/Timer';
 
 export default function App() {
-  const [minutes, setMinutes] = useState('');
-  const [seconds, setSeconds] = useState('');
-  const [timer, setTimer] = useState(false);
+  // Func to get data from local storage
+  // init value will be empty if no option entered
+  const useLocalState = (key, defaultValue = '') => {
+    const [state, setState] = useState(
+      () => window.localStorage.getItem(key) || defaultValue );
 
+    // Effect will change state in local storage
+    useEffect(() => {
+      window.localStorage.setItem(key, state)
+    }, [key, state]);
+
+    // Passing data, from where useLocalState was called
+    return [state, setState];
+  } 
+
+  // States
+  const [minutes, setMinutes] = useLocalState('minutes');
+  const [seconds, setSeconds] = useLocalState('seconds');
+  const [active, setActive] = useLocalState('active')
+  
+
+  // Func to reset timer
   const resetTimer = () => {
     setMinutes('');
     setSeconds('');
-  }
-
-  const Countdown = () => {
-    useEffect(() => {
-      const counter = setInterval(() => {
-        if( seconds > 0) {
-          setSeconds(seconds - 1);
-        }
-        
-        if(seconds === 0) {
-          if(minutes === 0) {
-            // Reset the timer
-            clearInterval(counter);
-            resetTimer()
-          } else {
-            setMinutes(minutes - 1);
-            setSeconds(59);
-          }
-        }
-      }, 1000);
-      return () => {
-        clearInterval(counter);
-      }
-    });
-    return (
-      <div>
-        <p>{minutes}:{seconds}</p>
-      </div>
-    )
   }
 
   const startTimer = (e) => {
@@ -47,7 +37,7 @@ export default function App() {
       second: seconds,
     }
 
-    setTimer(true);
+    setActive(true);
     console.log('Timer started', time);
   }
 
@@ -70,13 +60,10 @@ export default function App() {
         </form>
       </div>
 
-      <div>
-        {timer && <Countdown />}
-      </div>
-
+      { active && <Timer minutes={minutes} setMinutes={setMinutes} seconds={seconds} setSeconds={setSeconds} resetTimer={resetTimer} /> }
       <div>
         <h2>Timer history</h2>
-        items
+        
       </div>
     </div>
   );
