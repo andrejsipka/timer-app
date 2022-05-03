@@ -38,36 +38,34 @@ export default function App() {
       second: seconds,
     }
 
+    console.log('Timer running', time);
+
     setActive(true);
     console.log('Timer started', time);
   }
 
   return (
-    <div>
-      <div>
-        <h1>Quick Timer with React</h1>
-        <form onSubmit={startTimer} >
-          <div>
-          <label>
-            <span>Minute</span>
-            <input type="number" id="minute" name="minute" placeholder="0" onChange={(e) => setMinutes(e.target.value)} value={minutes} />
-          </label>
+    <div className='container'>
+      <div className='timer'>
+        <h1 className='heading-primary'>Quick Timer with React</h1>
+        <form onSubmit={startTimer} className='form'>
+          <div className='form__wrapper'>
+            <label className='form__label'>
+              <span>Minute</span>
+              <input type="number" id="minute" name="minute" placeholder="0" onChange={(e) => setMinutes(e.target.value)} value={minutes} />
+            </label>
 
-          <label>
-            <span>Second</span>
-            <input type="number" id="second" name="second" placeholder="0" onChange={(e) => setSeconds(e.target.value)} value={seconds} />
-          </label>
+            <label className='form__label'>
+              <span>Second</span>
+              <input type="number" id="second" name="second" placeholder="0" onChange={(e) => setSeconds(e.target.value)} value={seconds} />
+            </label>
           </div>
           
-          <button>start</button>
+          <button className='btn btn--orange'>start</button>
         </form>
       </div>
 
       { active && <Timer minutes={minutes} setMinutes={setMinutes} seconds={seconds} setSeconds={setSeconds} resetTimer={resetTimer} /> }
-      <div>
-        <h2>Timer history</h2>
-        
-      </div>
     </div>
   );
 }

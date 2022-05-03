@@ -1,0 +1,51 @@
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form__wrapper {
+    margin-bottom: 2rem;
+}
+
+.form__label {
+    display: flex;
+    flex-direction: column;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+}
+
+input[type=number] {
+    background-color: var(--color-background-card);
+    color: var(--color-form-paragraph);
+    width: 30rem;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    padding: 1rem 2rem;
+}
+
+input[type=number]:focus {
+    
+}

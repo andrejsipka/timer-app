@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --color-background: #fffffe;
+    --color-background-card: #eff0f3;
+    --color-headline: #0d0d0d;
+    --color-paragraph: #2a2a2a;
+
+    --color-button: #ff8e3c;
+    --color-button-text: #0d0d0d;
+
+    --color-form-paragraph: #2a2a2a;
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+#root { height: 100%; }
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: var(--color-background);
+    font-size: 1.6rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-headline);
+}
+
+span, p, button, a, input, label {
+    font-family: 'Nunito', sans-serif;
+    color: var(--color-paragraph);
+}
+
+.heading-primary {
+    margin: 0;
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+.paragraph, .label {
+    margin: 0;
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+.btn {
+    cursor: pointer;
+    outline: none;
+    border: none;
+
+    padding: 1rem 4rem;
+    font-size: 1.8rem;
+    border-radius: 2px;
+}
+
+.btn--orange {
+    background-color: var(--color-button);
+    color: var(--color-button-text);
+}
