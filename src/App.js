@@ -1,3 +1,4 @@
+import './App.css'; 
 import { useState, useEffect } from "react";
 import Timer from './components/Timer';
 
@@ -20,7 +21,7 @@ export default function App() {
   // States
   const [minutes, setMinutes] = useLocalState('minutes');
   const [seconds, setSeconds] = useLocalState('seconds');
-  const [active, setActive] = useLocalState('active')
+  const [active, setActive] = useLocalState('active');
   
 
   // Func to reset timer
@@ -45,7 +46,8 @@ export default function App() {
     <div>
       <div>
         <h1>Quick Timer with React</h1>
-        <form onSubmit={startTimer}>
+        <form onSubmit={startTimer} >
+          <div>
           <label>
             <span>Minute</span>
             <input type="number" id="minute" name="minute" placeholder="0" onChange={(e) => setMinutes(e.target.value)} value={minutes} />
@@ -55,6 +57,7 @@ export default function App() {
             <span>Second</span>
             <input type="number" id="second" name="second" placeholder="0" onChange={(e) => setSeconds(e.target.value)} value={seconds} />
           </label>
+          </div>
           
           <button>start</button>
         </form>
